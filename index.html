@@ -56,11 +56,10 @@
         .product-card { background: white; border-radius: 24px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0,0,0,0.03); }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
         
-        /* ИСПРАВЛЕНО: Стили для картинок в карточках */
-        .card-image-container { position: relative; overflow: hidden; border-top-left-radius: 24px; border-top-right-radius: 24px; background: #f1f5f9; }
-        /* object-fit: contain вмещает картинку целиком, padding добавляет отступы */
-        .card-image { width: 100%; height: 100%; object-fit: contain; padding: 16px; transition: transform 0.5s ease; }
-        .product-card:hover .card-image { transform: scale(1.05); }
+        /* ИСПРАВЛЕНО: Фон теперь белый (#ffffff), чтобы сливаться с фото */
+        .card-image-container { position: relative; overflow: hidden; border-top-left-radius: 24px; border-top-right-radius: 24px; background: #ffffff; }
+        .card-image { width: 100%; height: 100%; object-fit: contain; padding: 12px; transition: transform 0.5s ease; }
+        .product-card:hover .card-image { transform: scale(1.08); }
 
         #mobile-menu { transition: 0.4s ease; transform: translateX(100%); }
         #mobile-menu.open { transform: translateX(0); }
@@ -279,7 +278,7 @@
                                     <div class="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-300 hidden">
                                         <span class="font-heading text-4xl font-bold opacity-20">NO PHOTO</span>
                                     </div>
-                                    <div class="absolute top-4 left-4 bg-white text-solar-dark text-[10px] font-bold px-3 py-1 rounded-full shadow-sm border border-gray-100 z-10">${item.type}</div>
+                                    <div class="absolute top-4 left-4 bg-white text-solar-dark text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-gray-100 z-10">${item.type}</div>
                                 </div>
                                 <div class="p-6">
                                     <h3 class="font-heading text-xl font-bold text-solar-dark mb-2 group-hover:text-solar-primary transition h-14 line-clamp-2">${item.name}</h3>
@@ -305,7 +304,7 @@
         <div class="modal-panel bg-white w-full max-w-4xl rounded-3xl overflow-hidden relative shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
             <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition"><i class="fas fa-times text-gray-500"></i></button>
             
-            <div class="w-full md:w-1/2 bg-slate-50 flex items-center justify-center min-h-[300px] p-6">
+            <div class="w-full md:w-1/2 bg-white flex items-center justify-center min-h-[300px] p-6 border-b md:border-b-0 md:border-r border-gray-100">
                 <img id="modal-img" src="" class="w-full h-full object-contain mix-blend-multiply max-h-[400px]" alt="Drone">
             </div>
 
