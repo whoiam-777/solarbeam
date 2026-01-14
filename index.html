@@ -56,9 +56,10 @@
         .product-card { background: white; border-radius: 24px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0,0,0,0.03); }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
         
-        /* Для картинок в карточках */
+        /* ИСПРАВЛЕНО: Стили для картинок в карточках */
         .card-image-container { position: relative; overflow: hidden; border-top-left-radius: 24px; border-top-right-radius: 24px; background: #f1f5f9; }
-        .card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        /* object-fit: contain вмещает картинку целиком, padding добавляет отступы */
+        .card-image { width: 100%; height: 100%; object-fit: contain; padding: 16px; transition: transform 0.5s ease; }
         .product-card:hover .card-image { transform: scale(1.05); }
 
         #mobile-menu { transition: 0.4s ease; transform: translateX(100%); }
@@ -210,7 +211,7 @@
                             name: 'SOLAR BEAM M3 серый', 
                             price: '16 999 ₸', 
                             type: 'GPS', 
-                            img: 'm3.jpg', /* ИМЯ ФАЙЛА */
+                            img: 'm3.jpg',
                             desc: 'Дрон с GPS, автовозвратом и функцией следования. Аккумулятор 1800mAh, время полета до 15 минут. Камера 720p (фото 4096*2160). Дальность 200м.',
                             specs: { flyTime: '15 мин', range: '200 м', camera: '720p' }
                         },
@@ -219,7 +220,7 @@
                             name: 'KBDFA E88pro черный', 
                             price: '12 999 ₸', 
                             type: 'Старт', 
-                            img: 'e88.jpg', /* ИМЯ ФАЙЛА */
+                            img: 'e88.jpg',
                             desc: 'Идеальный старт для пилота. Впечатляющие 20 минут полета! Камера 720p, дальность 100м. Складной корпус, очень легкий, защита винтов в комплекте.',
                             specs: { flyTime: '20 мин', range: '100 м', camera: '720p' }
                         },
@@ -228,7 +229,7 @@
                             name: 'SOLAR BEAM VI86 черный', 
                             price: '22 999 ₸', 
                             type: 'Хит', 
-                            img: 'vi86.jpg', /* ИМЯ ФАЙЛА */
+                            img: 'vi86.jpg',
                             desc: 'Компактный квадрокоптер. Время полета до 15 минут, зарядка 60 мин. Камера 480p с углом обзора 90°. Функция следования за оператором, WiFi управление.',
                             specs: { flyTime: '15 мин', range: 'WiFi', camera: '480p' }
                         },
@@ -237,7 +238,7 @@
                             name: 'SolarBeam S9 черный', 
                             price: '42 999 ₸', 
                             type: 'Pro GPS', 
-                            img: 's9.jpg', /* ИМЯ ФАЙЛА */
+                            img: 's9.jpg',
                             desc: 'Профессиональное решение. Лазерный обход препятствий, бесколлекторные моторы. Дальность до 3000м! Трансляция видео до 1500м. Вес 320г.',
                             specs: { flyTime: '20 мин', range: '3000 м', camera: 'HD' }
                         },
@@ -246,7 +247,7 @@
                             name: 'SOLAR BEAM YK8 черный', 
                             price: '29 999 ₸', 
                             type: 'Long Life', 
-                            img: 'yk8.jpg', /* ИМЯ ФАЙЛА */
+                            img: 'yk8.jpg',
                             desc: 'Рекордсмен по времени полета — до 40 минут благодаря АКБ 3800mAh. Дальность 500м, камера 480p. Вес 800г для стабильного полета.',
                             specs: { flyTime: '40 мин', range: '500 м', camera: '480p' }
                         },
@@ -255,7 +256,7 @@
                             name: 'Skybox M3Max 4akb синий', 
                             price: '44 000 ₸', 
                             type: 'Комплект', 
-                            img: 'm3max.jpg', /* ИМЯ ФАЙЛА */
+                            img: 'm3max.jpg',
                             desc: 'Максимальный комплект: 4 аккумулятора (3800mAh каждый)! Время полета до 40 мин на одном заряде. GPS, дальность 500м. Сумка и защита в комплекте.',
                             specs: { flyTime: '40 мин/АКБ', range: '500 м', camera: '480p' }
                         },
@@ -264,14 +265,13 @@
                             name: 'SOLAR BEAM VI82 черный', 
                             price: '22 999 ₸', 
                             type: 'Автопилот', 
-                            img: 'vi82.jpg', /* ИМЯ ФАЙЛА */
+                            img: 'vi82.jpg',
                             desc: 'Умный дрон с автопилотом и возвратом домой. Камера 720p. Время полета до 10 минут (АКБ 1800mAh). WiFi управление, защита винтов в комплекте.',
                             specs: { flyTime: '10 мин', range: 'WiFi', camera: '720p' }
                         }
                     ];
 
                     catalog.forEach((item, i) => {
-                        // ТЕПЕРЬ ТУТ КАРТИНКА ВМЕСТО РАМКИ
                         document.write(`
                             <div class="product-card group cursor-pointer" onclick="openModal('${item.id}', '${item.name}', '${item.price}', '${item.desc}', '${item.specs.flyTime}', '${item.specs.range}', '${item.specs.camera}', '${item.img}')" data-aos="fade-up" data-aos-delay="${i * 50}">
                                 <div class="card-image-container h-64 w-full relative">
