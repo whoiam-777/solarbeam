@@ -20,16 +20,14 @@
                     },
                     colors: { 
                         solar: {
-                            // ИЗМЕНЕНО: Синяя палитра вместо оранжевой
-                            primary: '#0072ff',   /* Основной синий */
-                            secondary: '#00c6ff', /* Светло-голубой для градиента */
-                            dark: '#0f172a',      /* Темно-синий текст (вместо черного) */
-                            gray: '#64748b'       /* Серый текст */
+                            primary: '#0072ff',
+                            secondary: '#00c6ff',
+                            dark: '#0f172a',
+                            gray: '#64748b'
                         }
                     },
                     boxShadow: {
-                        // ИЗМЕНЕНО: Синяя тень
-                        'soft': '0 20px 40px -15px rgba(0, 114, 255, 0.25)',
+                        'soft': '0 20px 40px -15px rgba(0, 114, 25, 0.25)',
                     }
                 }
             }
@@ -41,13 +39,10 @@
         
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f8fafc; }
-        /* Синий скроллбар */
         ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #0072ff, #00c6ff); border-radius: 10px; }
 
-        /* Синий градиент для текста */
         .text-gradient { background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Синяя кнопка */
         .btn-solar { background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%); color: white; transition: all 0.3s ease; }
         .btn-solar:hover { box-shadow: 0 15px 30px rgba(0, 114, 255, 0.4); transform: translateY(-2px); }
 
@@ -55,7 +50,8 @@
         header.scrolled { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding-top: 10px; padding-bottom: 10px; }
 
         .video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        .video-bg { width: 100%; height: 100%; object-fit: cover; }
+        /* ИЗМЕНЕНО: Добавлено object-position: center для лучшего центрирования */
+        .video-bg { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
         .video-fade-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; background: linear-gradient(to bottom, transparent, #f8fafc); }
 
         .product-card { background: white; border-radius: 24px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0,0,0,0.03); }
@@ -88,8 +84,7 @@
             
             <a href="#" class="flex items-center gap-2 group">
                 <div class="w-10 h-10 flex items-center justify-center transition overflow-hidden">
-                    <img src="logo.png" class="w-full h-full object-contain" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                    
+                    <img src="images/logo.png" class="w-full h-full object-contain" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-solar-primary to-solar-secondary flex items-center justify-center text-white shadow-lg hidden">
                         <i class="fas fa-paper-plane text-lg"></i>
                     </div>
@@ -123,7 +118,7 @@
         <a href="https://wa.me/77781860510" class="btn-solar px-10 py-4 rounded-full text-lg font-bold shadow-soft mt-4">Написать нам</a>
     </div>
 
-    <section id="home" class="relative h-screen min-h-[700px] flex items-center justify-center pt-20">
+    <section id="home" class="relative h-screen min-h-[80vh] md:min-h-[700px] flex items-center justify-center pt-20">
         <div class="video-wrapper">
             <video autoplay muted loop playsinline class="video-bg">
                 <source src="videos/hero.mp4" type="video/mp4">
@@ -168,36 +163,38 @@
                 </div>
 
                 <div class="w-full lg:w-1/2" data-aos="fade-left">
-    <h2 class="font-heading text-4xl md:text-5xl font-bold text-solar-dark mb-6">Будущее уже <br><span class="text-gradient">Здесь</span></h2>
-    <p class="text-solar-gray text-lg leading-relaxed mb-8">
-        Мы предоставляем полный спектр услуг: от подбора индивидуальной модели до обучения пилотированию и сервисного обслуживания.
-    </p>
-
-    <div class="relative overflow-hidden rounded-3xl bg-[#0f172a] p-8 shadow-2xl border border-gray-800 group">
-        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-solar-primary rounded-full blur-[60px] opacity-30 group-hover:opacity-50 transition duration-700"></div>
-
-        <div class="relative z-10">
-            <div class="flex items-start gap-5 mb-6">
-                <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-solar-secondary backdrop-blur-sm shrink-0 border border-white/5">
-                    <i class="fas fa-question text-2xl"></i>
-                </div>
-                
-                <div>
-                    <h4 class="font-heading font-bold text-white text-xl mb-2">Затрудняетесь с выбором?</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Не тратьте время на изучение характеристик. Напишите нам — мы подберем идеальный дрон под ваш бюджет и задачи за 5 минут.
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-solar-dark mb-6">Будущее уже <br><span class="text-gradient">Здесь</span></h2>
+                    <p class="text-solar-gray text-lg leading-relaxed mb-8">
+                        Мы предоставляем полный спектр услуг: от подбора индивидуальной модели до обучения пилотированию и сервисного обслуживания.
                     </p>
+
+                    <div class="relative overflow-hidden rounded-3xl bg-[#0f172a] p-6 md:p-8 shadow-2xl border border-gray-800 group">
+                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-solar-primary rounded-full blur-[60px] opacity-30 group-hover:opacity-50 transition duration-700"></div>
+
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 md:gap-5 mb-6">
+                                <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/10 flex items-center justify-center text-solar-secondary backdrop-blur-sm shrink-0 border border-white/5">
+                                    <i class="fas fa-question text-xl md:text-2xl"></i>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-heading font-bold text-white text-lg md:text-xl mb-2">Затрудняетесь с выбором?</h4>
+                                    <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+                                        Не тратьте время на изучение характеристик. Напишите нам — мы подберем идеальный дрон под ваш бюджет и задачи за 5 минут.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <a href="https://wa.me/77781860510" class="btn-solar w-full py-3 md:py-4 rounded-xl font-bold uppercase tracking-widest text-center shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:scale-[1.02] transition-transform text-xs md:text-sm">
+                                <i class="fab fa-whatsapp text-base md:text-lg"></i> Подобрать дрон в WhatsApp
+                            </a>
+                            
+                            <p class="text-center text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Отвечаем моментально</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <a href="https://wa.me/77781860510" class="btn-solar w-full py-4 rounded-xl font-bold uppercase tracking-widest text-center shadow-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform text-sm">
-                <i class="fab fa-whatsapp text-lg"></i> Подобрать дрон в WhatsApp
-            </a>
-            
-            <p class="text-center text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Отвечаем моментально</p>
         </div>
-    </div>
-</div>
     </section>
 
     <section id="catalog" class="py-24 bg-slate-50">
@@ -337,7 +334,7 @@
                 <div class="col-span-1 md:col-span-2">
                     <a href="#" class="flex items-center gap-2 mb-6 group">
                         <div class="w-8 h-8 flex items-center justify-center">
-                             <img src="logo.png" class="w-full h-full object-contain" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                             <img src="images/logo.png" class="w-full h-full object-contain" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                              <div class="w-8 h-8 rounded bg-gradient-to-br from-solar-primary to-solar-secondary flex items-center justify-center text-white hidden"><i class="fas fa-paper-plane"></i></div>
                         </div>
                         <span class="font-heading text-2xl font-bold text-solar-dark">SOLAR BEAM</span>
