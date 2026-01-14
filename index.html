@@ -50,16 +50,16 @@
         header.scrolled { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding-top: 10px; padding-bottom: 10px; }
 
         .video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        /* ИЗМЕНЕНО: Добавлено object-position: center для лучшего центрирования */
         .video-bg { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
         .video-fade-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; background: linear-gradient(to bottom, transparent, #f8fafc); }
 
         .product-card { background: white; border-radius: 24px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0,0,0,0.03); }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
         
-        .frame-placeholder { background: #f1f5f9; position: relative; overflow: hidden; }
-        .frame-placeholder::after { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent); transform: translateX(-100%); transition: 0.5s; }
-        .product-card:hover .frame-placeholder::after { transform: translateX(100%); transition: 0.7s; }
+        /* Для картинок в карточках */
+        .card-image-container { position: relative; overflow: hidden; border-top-left-radius: 24px; border-top-right-radius: 24px; background: #f1f5f9; }
+        .card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .card-image { transform: scale(1.05); }
 
         #mobile-menu { transition: 0.4s ease; transform: translateX(100%); }
         #mobile-menu.open { transform: translateX(0); }
@@ -176,7 +176,6 @@
                                 <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/10 flex items-center justify-center text-solar-secondary backdrop-blur-sm shrink-0 border border-white/5">
                                     <i class="fas fa-question text-xl md:text-2xl"></i>
                                 </div>
-                                
                                 <div>
                                     <h4 class="font-heading font-bold text-white text-lg md:text-xl mb-2">Затрудняетесь с выбором?</h4>
                                     <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
@@ -184,11 +183,9 @@
                                     </p>
                                 </div>
                             </div>
-
                             <a href="https://wa.me/77781860510" class="btn-solar w-full py-3 md:py-4 rounded-xl font-bold uppercase tracking-widest text-center shadow-lg flex items-center justify-center gap-2 md:gap-3 hover:scale-[1.02] transition-transform text-xs md:text-sm">
                                 <i class="fab fa-whatsapp text-base md:text-lg"></i> Подобрать дрон в WhatsApp
                             </a>
-                            
                             <p class="text-center text-[10px] text-gray-500 mt-3 uppercase tracking-wider">Отвечаем моментально</p>
                         </div>
                     </div>
@@ -213,6 +210,7 @@
                             name: 'SOLAR BEAM M3 серый', 
                             price: '16 999 ₸', 
                             type: 'GPS', 
+                            img: 'm3.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Дрон с GPS, автовозвратом и функцией следования. Аккумулятор 1800mAh, время полета до 15 минут. Камера 720p (фото 4096*2160). Дальность 200м.',
                             specs: { flyTime: '15 мин', range: '200 м', camera: '720p' }
                         },
@@ -221,6 +219,7 @@
                             name: 'KBDFA E88pro черный', 
                             price: '12 999 ₸', 
                             type: 'Старт', 
+                            img: 'e88.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Идеальный старт для пилота. Впечатляющие 20 минут полета! Камера 720p, дальность 100м. Складной корпус, очень легкий, защита винтов в комплекте.',
                             specs: { flyTime: '20 мин', range: '100 м', camera: '720p' }
                         },
@@ -229,6 +228,7 @@
                             name: 'SOLAR BEAM VI86 черный', 
                             price: '22 999 ₸', 
                             type: 'Хит', 
+                            img: 'vi86.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Компактный квадрокоптер. Время полета до 15 минут, зарядка 60 мин. Камера 480p с углом обзора 90°. Функция следования за оператором, WiFi управление.',
                             specs: { flyTime: '15 мин', range: 'WiFi', camera: '480p' }
                         },
@@ -237,6 +237,7 @@
                             name: 'SolarBeam S9 черный', 
                             price: '42 999 ₸', 
                             type: 'Pro GPS', 
+                            img: 's9.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Профессиональное решение. Лазерный обход препятствий, бесколлекторные моторы. Дальность до 3000м! Трансляция видео до 1500м. Вес 320г.',
                             specs: { flyTime: '20 мин', range: '3000 м', camera: 'HD' }
                         },
@@ -245,6 +246,7 @@
                             name: 'SOLAR BEAM YK8 черный', 
                             price: '29 999 ₸', 
                             type: 'Long Life', 
+                            img: 'yk8.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Рекордсмен по времени полета — до 40 минут благодаря АКБ 3800mAh. Дальность 500м, камера 480p. Вес 800г для стабильного полета.',
                             specs: { flyTime: '40 мин', range: '500 м', camera: '480p' }
                         },
@@ -253,6 +255,7 @@
                             name: 'Skybox M3Max 4akb синий', 
                             price: '44 000 ₸', 
                             type: 'Комплект', 
+                            img: 'm3max.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Максимальный комплект: 4 аккумулятора (3800mAh каждый)! Время полета до 40 мин на одном заряде. GPS, дальность 500м. Сумка и защита в комплекте.',
                             specs: { flyTime: '40 мин/АКБ', range: '500 м', camera: '480p' }
                         },
@@ -261,17 +264,22 @@
                             name: 'SOLAR BEAM VI82 черный', 
                             price: '22 999 ₸', 
                             type: 'Автопилот', 
+                            img: 'vi82.jpg', /* ИМЯ ФАЙЛА */
                             desc: 'Умный дрон с автопилотом и возвратом домой. Камера 720p. Время полета до 10 минут (АКБ 1800mAh). WiFi управление, защита винтов в комплекте.',
                             specs: { flyTime: '10 мин', range: 'WiFi', camera: '720p' }
                         }
                     ];
 
                     catalog.forEach((item, i) => {
+                        // ТЕПЕРЬ ТУТ КАРТИНКА ВМЕСТО РАМКИ
                         document.write(`
-                            <div class="product-card group cursor-pointer" onclick="openModal('${item.id}', '${item.name}', '${item.price}', '${item.desc}', '${item.specs.flyTime}', '${item.specs.range}', '${item.specs.camera}')" data-aos="fade-up" data-aos-delay="${i * 50}">
-                                <div class="frame-placeholder h-64 w-full flex items-center justify-center rounded-t-3xl text-gray-300">
-                                    <span class="font-heading text-6xl font-bold opacity-20">${item.id.split(' ')[2] || 'DRONE'}</span>
-                                    <div class="absolute top-4 left-4 bg-white text-solar-dark text-[10px] font-bold px-3 py-1 rounded-full shadow-sm border border-gray-100">${item.type}</div>
+                            <div class="product-card group cursor-pointer" onclick="openModal('${item.id}', '${item.name}', '${item.price}', '${item.desc}', '${item.specs.flyTime}', '${item.specs.range}', '${item.specs.camera}', '${item.img}')" data-aos="fade-up" data-aos-delay="${i * 50}">
+                                <div class="card-image-container h-64 w-full relative">
+                                    <img src="images/${item.img}" alt="${item.name}" class="card-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                    <div class="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-300 hidden">
+                                        <span class="font-heading text-4xl font-bold opacity-20">NO PHOTO</span>
+                                    </div>
+                                    <div class="absolute top-4 left-4 bg-white text-solar-dark text-[10px] font-bold px-3 py-1 rounded-full shadow-sm border border-gray-100 z-10">${item.type}</div>
                                 </div>
                                 <div class="p-6">
                                     <h3 class="font-heading text-xl font-bold text-solar-dark mb-2 group-hover:text-solar-primary transition h-14 line-clamp-2">${item.name}</h3>
@@ -296,9 +304,11 @@
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="modal-panel bg-white w-full max-w-4xl rounded-3xl overflow-hidden relative shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
             <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition"><i class="fas fa-times text-gray-500"></i></button>
-            <div class="w-full md:w-1/2 bg-slate-100 flex items-center justify-center min-h-[300px]">
-                <span id="modal-id" class="font-heading text-6xl text-gray-300 font-bold text-center px-4">DRONE</span>
+            
+            <div class="w-full md:w-1/2 bg-slate-50 flex items-center justify-center min-h-[300px] p-6">
+                <img id="modal-img" src="" class="w-full h-full object-contain mix-blend-multiply max-h-[400px]" alt="Drone">
             </div>
+
             <div class="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
                 <span class="text-solar-primary text-xs font-bold uppercase tracking-widest mb-2 block">Характеристики</span>
                 <h2 id="modal-title" class="font-heading text-3xl font-bold text-solar-dark mb-2">Название</h2>
@@ -358,7 +368,7 @@
                 <div>
                     <h4 class="font-bold text-solar-dark mb-6">Контакты</h4>
                     <ul class="space-y-3 text-sm text-gray-500">
-                        <li>г.Алматы, Рынок Рахат</li>
+                        <li>Астана, Казахстан</li>
                         <li><a href="tel:+77781860510" class="hover:text-solar-primary transition font-bold text-solar-dark text-lg">+7 778 186 05 10</a></li>
                         <li>info@solarbeam.kz</li>
                     </ul>
@@ -394,15 +404,13 @@
         }
 
         // Open Modal Logic
-        function openModal(id, name, price, desc, fly, range, cam) {
+        function openModal(id, name, price, desc, fly, range, cam, img) {
             document.getElementById('modal-title').innerText = name;
             document.getElementById('modal-price').innerText = price;
             document.getElementById('modal-desc').innerText = desc;
-            // Берем красивое короткое имя для фона (например M3, S9, VI86)
-            let shortName = 'DRONE';
-            const parts = id.split(' ');
-            if (parts.length >= 3) shortName = parts[2];
-            document.getElementById('modal-id').innerText = shortName;
+            
+            // Вставляем картинку в модалку
+            document.getElementById('modal-img').src = 'images/' + img;
             
             // Заполнение спец. полей
             document.getElementById('spec-fly').innerText = fly;
